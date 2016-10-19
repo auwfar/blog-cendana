@@ -37,7 +37,7 @@
 
 							$tanggal_lengkap = $tanggal[2] .' ' .$bulan .' ' .$tanggal[0];
 							?>
-							<a <?php echo 'href="content.php?id=' .$data['id_artikel'] .'"'; ?> >
+							<a href="content.php?id=<?php echo $data['id_artikel']; ?>">
 								<div class="blog-wrapper">
 							        <div class="blog-item">
 							            <div class="blog-content" <?php echo "style='background-image: url(assets/img/" .$data['gambar_artikel'] .")'"; ?> >

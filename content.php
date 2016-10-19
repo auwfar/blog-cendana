@@ -4,7 +4,13 @@
 			<div class="container">
 				<section id="mainbar">
 					<?php
-						$SQL = 'SELECT * FROM tb_artikel WHERE id_artikel = ' .$_GET['id'];
+						$SQL = 'SELECT
+									tb_artikel.*, tb_kategori.nama_kategori
+								FROM
+									tb_artikel, tb_kategori
+								WHERE 
+									tb_artikel.id_kategori = tb_kategori.id_kategori AND
+									tb_artikel.id_artikel = ' .$_GET['id'];
 						$result = mysql_query($SQL);
 						$data = mysql_fetch_array($result);
 
@@ -36,13 +42,19 @@
 						}
 
 						$tanggal_lengkap = $tanggal[2] .' ' .$bulan .' ' .$tanggal[0];
+
+
+						//Tambah View
+						$jumlah_view = $data['jumlah_view'] + 1;
+						$SQL_view = "UPDATE tb_artikel SET jumlah_view = " .$jumlah_view ." WHERE id_artikel = " .$_GET['id'];
+						$result_view = mysql_query($SQL_view);
 					?>
 					<div class="article-wrapper">
 						<div class="article-title">
 							<h2><?php echo $data['judul_artikel']; ?></h2>
 						</div>
 						<div class="article-meta">
-							<?php echo $tanggal_lengkap; ?> <span>Lorem</span>
+							<?php echo $tanggal_lengkap; ?> <span><?php echo $data['nama_kategori']; ?></span><span>DIlihat <?php echo $jumlah_view; ?> x</span>
 						</div>
 						<div class="article-content">
 							<img <?php echo 'src="assets/img/' .$data['gambar_artikel'] .'"'; ?>>

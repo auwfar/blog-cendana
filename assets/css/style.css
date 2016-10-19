@@ -176,6 +176,11 @@ header nav ul li a:hover {
     color: #666;
 }
 
+.module .module-content a{
+    text-decoration: none;
+    color: #000;
+}
+
 .module .module-content .module-profile {
     text-align: center;
 }
@@ -272,6 +277,7 @@ span.sosmed {
     padding: 3px;
     background: salmon;
     border-radius: 2px 8px;
+    margin-right: 3px;
 }
 
 .article-content {
